@@ -1,0 +1,6 @@
+layers:
+1- walls (obstacles)
+2- ground (water)
+3- items (food, wood, things on ground)
+4- attackable (characters, breakable walls, trees)
+5- character

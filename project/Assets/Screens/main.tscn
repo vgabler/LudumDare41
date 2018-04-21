@@ -1,22 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Scripts/race.gd" type="Script" id=1]
 [ext_resource path="res://Assets/tileset.tres" type="TileSet" id=2]
-[ext_resource path="res://Assets/Scripts/character.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Sprites/pixel.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Scripts/breakable_map.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Scenes/pickable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sprites/16x16-tiles_0.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Scenes/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Scenes/character.tscn" type="PackedScene" id=7]
 
-[sub_resource type="GDScript" id=2]
-
-script/source = "extends TileMap
-
-func clean_tile(pos):
-	var p = world_to_map(pos)
-	set_cell(p.x, p.y, -1)"
-
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 10.0
+extents = Vector2( 272, 8 )
 
 [node name="root" type="Node" index="0"]
 
@@ -68,9 +63,7 @@ format = 1
 tile_data = PoolIntArray( 4653072, 0, 0, 4653073, 0, 0, 4653074, 0, 0, 4653075, 0, 0, 4653076, 0, 0, 4653077, 0, 0, 4653078, 0, 0, 4653079, 0, 0, 4653080, 0, 0, 4653081, 0, 0, 4718605, 0, 0, 4718606, 0, 0, 4718607, 0, 0, 4718608, 0, 0, 4718609, 0, 0, 4718610, 0, 0, 4718611, 0, 0, 4718612, 0, 0, 4718613, 0, 0, 4718614, 0, 0, 4718615, 0, 0, 4718616, 0, 0, 4718617, 0, 0, 4718618, 0, 0, 4718619, 0, 0, 4718620, 0, 0, 4784140, 0, 0, 4784141, 0, 0, 4784142, 0, 0, 4784143, 0, 0, 4784144, 0, 0, 4784145, 0, 0, 4784146, 0, 0, 4784147, 0, 0, 4784148, 0, 0, 4784149, 0, 0, 4784150, 0, 0, 4784151, 0, 0, 4784152, 0, 0, 4784153, 0, 0, 4784154, 0, 0, 4784155, 0, 0, 4784156, 0, 0, 4784157, 0, 0, 4849676, 0, 0, 4849677, 0, 0, 4849678, 0, 0, 4849679, 0, 0, 4849680, 0, 0, 4849681, 0, 0, 4849682, 0, 0, 4849683, 0, 0, 4849684, 0, 0, 4849685, 0, 0, 4849686, 0, 0, 4849687, 0, 0, 4849688, 0, 0, 4849689, 0, 0, 4849690, 0, 0, 4849691, 0, 0, 4849692, 0, 0, 4915212, 0, 0, 4915213, 0, 0, 4915214, 0, 0, 4915215, 0, 0, 4915216, 0, 0, 4915217, 0, 0, 4915218, 0, 0, 4915219, 0, 0, 4915220, 0, 0, 4915221, 0, 0, 4915222, 0, 0, 4915223, 0, 0, 4915224, 0, 0, 4915225, 0, 0, 4915226, 0, 0, 4980749, 0, 0, 4980750, 0, 0, 4980751, 0, 0, 4980752, 0, 0, 4980753, 0, 0, 4980754, 0, 0, 4980755, 0, 0, 4980756, 0, 0, 4980757, 0, 0, 4980758, 0, 0, 5505041, 0, 0, 5505042, 0, 0, 5505043, 0, 0, 5570575, 0, 0, 5570576, 0, 0, 5570577, 0, 0, 5570578, 0, 0, 5570579, 0, 0, 5570580, 0, 0, 5570581, 0, 0, 5570582, 0, 0, 5570583, 0, 0, 5570584, 0, 0, 5636110, 0, 0, 5636111, 0, 0, 5636112, 0, 0, 5636113, 0, 0, 5636114, 0, 0, 5636115, 0, 0, 5636116, 0, 0, 5636117, 0, 0, 5636118, 0, 0, 5636119, 0, 0, 5636120, 0, 0, 5701646, 0, 0, 5701647, 0, 0, 5701648, 0, 0, 5701649, 0, 0, 5701650, 0, 0, 5701651, 0, 0, 5701652, 0, 0, 5701653, 0, 0, 5701654, 0, 0, 5701655, 0, 0, 5701656, 0, 0, 5701657, 0, 0, 5767182, 0, 0, 5767183, 0, 0, 5767184, 0, 0, 5767185, 0, 0, 5767186, 0, 0, 5767187, 0, 0, 5767188, 0, 0, 5767189, 0, 0, 5767190, 0, 0, 5767191, 0, 0, 5767192, 0, 0, 5767193, 0, 0, 5832718, 0, 0, 5832719, 0, 0, 5832720, 0, 0, 5832721, 0, 0, 5832722, 0, 0, 5832723, 0, 0, 5832724, 0, 0, 5832725, 0, 0, 5832726, 0, 0, 5832727, 0, 0, 5832728, 0, 0, 5832729, 0, 0, 5898255, 0, 0, 5898256, 0, 0, 5898257, 0, 0, 5898258, 0, 0, 5898259, 0, 0, 5898260, 0, 0, 5898261, 0, 0, 5898262, 0, 0, 5898263, 0, 0, 5898264, 0, 0, 5898265, 0, 0, 5963795, 0, 0, 5963796, 0, 0, 5963797, 0, 0, 5963798, 0, 0 )
 _sections_unfolded = [ "Cell", "Collision" ]
 
-[node name="breakable" type="TileMap" parent="environment" index="2" groups=[
-"rock",
-]]
+[node name="rocks" type="TileMap" parent="environment" index="2"]
 
 mode = 0
 tile_set = ExtResource( 2 )
@@ -84,75 +77,96 @@ cell_clip_uv = false
 collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
-collision_layer = 2
+collision_layer = 0
 collision_mask = 0
 occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( 5505028, 3, 0, 5505029, 3, 0, 5505030, 3, 0, 5505031, 3, 0, 5505032, 3, 0, 5570563, 3, 0, 5570564, 3, 0, 5570565, 3, 0, 5570566, 3, 0, 5570567, 3, 0, 5570568, 3, 0, 5570569, 3, 0, 5636099, 3, 0, 5636100, 3, 0, 5636101, 3, 0, 5636102, 3, 0, 5636103, 3, 0, 5636104, 3, 0, 5636105, 3, 0, 5701635, 3, 0, 5701636, 3, 0, 5701637, 3, 0, 5701638, 3, 0, 5701639, 3, 0, 5701640, 3, 0, 5701641, 3, 0, 5767172, 3, 0, 5767173, 3, 0, 5767174, 3, 0, 5767175, 3, 0, 5767176, 3, 0, 5767177, 3, 0, 5832709, 3, 0, 5832710, 3, 0, 5832711, 3, 0, 6160398, 3, 0, 6225929, 3, 0, 6357009, 3, 0 )
-script = SubResource( 2 )
+script = ExtResource( 3 )
 _sections_unfolded = [ "Cell", "Collision" ]
+resource = "rock"
 
-[node name="racers" type="Node2D" parent="." index="1"]
+[node name="trees" type="TileMap" parent="environment" index="3"]
 
-[node name="character" type="KinematicBody2D" parent="racers" index="0"]
-
-position = Vector2( 198, 1566 )
-input_pickable = false
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
 collision_layer = 1
 collision_mask = 1
-collision/safe_margin = 0.08
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 6160414, 4, 0, 6225950, 4, 0, 6291486, 4, 0 )
 script = ExtResource( 3 )
+_sections_unfolded = [ "Cell" ]
+resource = "wood"
 
-[node name="cam" type="Camera2D" parent="racers/character" index="0"]
+[node name="pickable" parent="environment" index="4" instance=ExtResource( 4 )]
 
-anchor_mode = 1
-rotating = false
-current = true
-zoom = Vector2( 1, 1 )
-limit_left = -10000000
-limit_top = -10000000
-limit_right = 10000000
-limit_bottom = 10000000
-limit_smoothed = false
-drag_margin_h_enabled = false
-drag_margin_v_enabled = false
-smoothing_enabled = false
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
+position = Vector2( 289, 1516 )
+value = 5
 
-[node name="shape" type="CollisionShape2D" parent="racers/character" index="1"]
+[node name="pickable2" parent="environment" index="5" instance=ExtResource( 4 )]
 
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
+position = Vector2( 355, 1538 )
+resource = "wood"
+value = 5
 
-[node name="Sprite" type="Sprite" parent="racers/character" index="2"]
+[node name="pickable3" parent="environment" index="6" instance=ExtResource( 4 )]
 
-position = Vector2( 9, 0 )
-texture = ExtResource( 4 )
+position = Vector2( 404, 1519 )
+resource = "rock"
+value = 5
 
-[node name="area" type="Area2D" parent="racers/character" index="3"]
+[node name="finish_line" type="Area2D" parent="environment" index="7"]
 
+editor/display_folded = true
+position = Vector2( 305, 80 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision_layer = 0
-collision_mask = 2
+collision_mask = 16
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Transform" ]
 
-[node name="shape" type="CollisionShape2D" parent="racers/character/area" index="0"]
+[node name="shape" type="CollisionShape2D" parent="environment/finish_line" index="0"]
 
+position = Vector2( -1, -2 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="sprite" type="Sprite" parent="environment/finish_line" index="1"]
+
+modulate = Color( 0.621094, 0.621094, 0.621094, 0.690588 )
+position = Vector2( -273, -10 )
+scale = Vector2( 34, 1 )
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 103, 1, 16, 16 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="racers" type="Node2D" parent="." index="1"]
+
+[node name="player" parent="racers" index="0" instance=ExtResource( 6 )]
+
+position = Vector2( 199, 1532 )
+
+[node name="character" parent="racers" index="1" instance=ExtResource( 7 )]
+
+position = Vector2( 459, 114 )
 
 [node name="bugcame" type="Node2D" parent="." index="2"]
 
@@ -162,8 +176,60 @@ position = Vector2( -7579, -3209 )
 
 position = Vector2( 9894, 7548 )
 
-[connection signal="body_entered" from="racers/character/area" to="racers/character" method="_on_tile_area_entered"]
+[node name="UI" type="CanvasLayer" parent="." index="4"]
 
-[connection signal="body_exited" from="racers/character/area" to="racers/character" method="_on_tile_area_exited"]
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="cd_panel" type="Panel" parent="UI" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 286.0
+margin_top = 161.0
+margin_right = 326.0
+margin_bottom = 201.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="cd_label" type="Label" parent="UI/cd_panel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "3"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
+
+[node name="restart_timer" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = true
+autostart = false
+
+[connection signal="body_entered" from="environment/finish_line" to="." method="_on_finish_line_body_entered"]
+
+[connection signal="timeout" from="restart_timer" to="." method="_on_restart_timer_timeout"]
 
 

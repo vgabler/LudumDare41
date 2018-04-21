@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Sprites/resources.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends StaticBody2D
+
+export var resource = \"food\"
+export var value = 1
+
+func _ready():
+	var frame = 0
+	if resource == \"wood\":
+		frame = 1
+	elif resource == \"rock\":
+		frame = 2
+	
+	get_node(\"sprite\").frame = frame"
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 8 )
+
+[node name="pickable" type="StaticBody2D" index="0" groups=[
+"pickable",
+]]
+
+input_pickable = false
+collision_layer = 2
+collision_mask = 0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script = SubResource( 1 )
+_sections_unfolded = [ "Collision" ]
+resource = "food"
+value = 1
+
+[node name="sprite" type="Sprite" parent="." index="0"]
+
+position = Vector2( 8, 8 )
+texture = ExtResource( 1 )
+hframes = 3
+_sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="shape" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 8, 8 )
+shape = SubResource( 2 )
+
+
