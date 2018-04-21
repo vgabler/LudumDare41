@@ -1,18 +1,18 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Scripts/character.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/walking1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/character.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Scenes/tool.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 10.0
+radius = 6.0
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 
 resource_name = "attack"
-length = 0.5
+length = 0.4
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -22,10 +22,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 4 ]
+"values": [ 10, 11, 12, 11 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("body/hand:position")
@@ -34,32 +34,25 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 11 ), Vector2( 23, 3 ), Vector2( 0, 11 ) ]
-}
-
-[sub_resource type="Animation" id=9]
-
-resource_name = "build"
-length = 0.2
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("body/sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1 ]
+"values": [ Vector2( 4.81079, 5.14766 ), Vector2( 6.9762, 2.06094 ), Vector2( 8.86499, -0.703217 ), Vector2( 6.73047, 2.38347 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("body/hand:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 18.5141, -1.53677, -14.4399, -5.0 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=3]
 
 resource_name = "eat"
 length = 0.5
@@ -75,26 +68,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 4, 5, 4, 5, 4 ]
-}
-
-[sub_resource type="Animation" id=2]
-
-resource_name = "idle"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("body/sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
+"values": [ 13, 14, 13, 14, 14 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("body/hand:position")
@@ -106,13 +80,24 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 11 ) ]
+"values": [ Vector2( 0.735352, 7.58571 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("body/hand:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 12.6208 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=4]
 
-resource_name = "lose"
-length = 1.0
+length = 0.5
 loop = true
 step = 0.1
 tracks/0/type = "value"
@@ -122,10 +107,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 5, 6, 7 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("body/hand:position")
@@ -134,15 +119,27 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1.6189, 7.57849 ), Vector2( 1.17761, 7.53691 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("body/hand:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 11 ), Vector2( 0, 18 ) ]
+"values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 
-resource_name = "walk"
+resource_name = "lose"
 length = 0.4
 loop = true
 step = 0.1
@@ -153,10 +150,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 3, 2, 0, 5 ]
+"values": [ 13, 14 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("body/hand:position")
@@ -165,16 +162,70 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 11 ), Vector2( -9, 11 ), Vector2( 0, 11 ), Vector2( 5, 11 ) ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -8.38501, 7.52974 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("body/hand:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 70.9 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=6]
+
+length = 0.6
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body/sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 2, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body/hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 6.65332, 5.49054 ), Vector2( 4.86707, 8.46622 ), Vector2( 1.05969, 8.69652 ), Vector2( -1.91833, 8.71144 ), Vector2( 0.968506, 8.6965 ), Vector2( 3.90454, 8.38348 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("body/hand:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ -4.07877, 12.6208, 0.304711, -6.56401, 11.9, 11.7 ]
+}
+
+[sub_resource type="Animation" id=7]
 
 resource_name = "win"
-length = 1.0
+length = 0.4
 loop = true
 step = 0.1
 tracks/0/type = "value"
@@ -184,10 +235,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 11 ), Vector2( 10, 11 ) ]
+"update": 1,
+"values": [ Vector2( 6.68018, 2.33885 ), Vector2( 8.80225, -0.701782 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("body/sprite:frame")
@@ -196,13 +247,25 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 11, 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("body/hand:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -96.7, -59.2 ]
 }
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=8]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -230,7 +293,7 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=9]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -258,7 +321,7 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=10]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -286,7 +349,7 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=11]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -314,6 +377,27 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
+[sub_resource type="GDScript" id=12]
+
+script/source = "extends Container
+
+func _ready():
+	visible = false
+
+func missing_resource(name):
+	warn(\"Need more \" + name + \"!\")
+
+func already_built():
+	warn(\"Already built!\")
+
+func warn(message):
+	get_node(\"label\").text = message
+	visible = true
+	get_node(\"timer\").start()
+
+func _on_timer_timeout():
+	visible = false"
+
 [node name="character" type="KinematicBody2D" index="0"]
 
 position = Vector2( 198, 1566 )
@@ -323,35 +407,16 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
+col = Color( 1, 1, 1, 1 )
 max_health = 10.0
 max_hunger = 10.0
 
-[node name="body" type="Node2D" parent="." index="0"]
-
-rotation = -1.5708
-_sections_unfolded = [ "Transform" ]
-
-[node name="sprite" type="Sprite" parent="body" index="0"]
-
-rotation = 1.5708
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 2 )
-hframes = 6
-_sections_unfolded = [ "Animation", "Transform" ]
-
-[node name="hand" type="Position2D" parent="body" index="1"]
-
-position = Vector2( 10, 11 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="tool" parent="body/hand" index="0" instance=ExtResource( 3 )]
-
-[node name="shape" type="CollisionShape2D" parent="." index="1"]
+[node name="shape" type="CollisionShape2D" parent="." index="0"]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="ground_check" type="Area2D" parent="." index="2"]
+[node name="ground_check" type="Area2D" parent="." index="1"]
 
 editor/display_folded = true
 input_pickable = true
@@ -360,7 +425,7 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision_layer = 0
-collision_mask = 2
+collision_mask = 34
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Collision" ]
@@ -369,6 +434,39 @@ _sections_unfolded = [ "Collision" ]
 
 shape = SubResource( 1 )
 
+[node name="body" type="Node2D" parent="." index="2"]
+
+rotation = -1.5708
+_sections_unfolded = [ "Transform" ]
+
+[node name="sprite" type="Sprite" parent="body" index="0"]
+
+rotation = 1.5708
+z_index = 1
+texture = ExtResource( 2 )
+vframes = 5
+hframes = 5
+frame = 10
+_sections_unfolded = [ "Animation", "Transform", "Z Index" ]
+
+[node name="build_ray" type="RayCast2D" parent="body" index="1"]
+
+position = Vector2( 6, 3.05176e-05 )
+rotation = 1.5708
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, -5 )
+collision_mask = 34
+
+[node name="hand" type="Position2D" parent="body" index="2"]
+
+editor/display_folded = true
+position = Vector2( 4.81079, 5.14766 )
+rotation = 0.323132
+_sections_unfolded = [ "Transform" ]
+
+[node name="tool" parent="body/hand" index="0" instance=ExtResource( 3 )]
+
 [node name="anim" type="AnimationPlayer" parent="." index="3"]
 
 root_node = NodePath("..")
@@ -376,13 +474,12 @@ autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/attack = SubResource( 4 )
-anims/build = SubResource( 9 )
-anims/eat = SubResource( 10 )
-anims/idle = SubResource( 2 )
-anims/lose = SubResource( 11 )
-anims/walk = SubResource( 3 )
-anims/win = SubResource( 12 )
+anims/attack = SubResource( 2 )
+anims/eat = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/lose = SubResource( 5 )
+anims/walk = SubResource( 6 )
+anims/win = SubResource( 7 )
 blend_times = [  ]
 
 [node name="hud" type="Control" parent="." index="4"]
@@ -414,8 +511,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_styles/fg = SubResource( 7 )
-custom_styles/bg = SubResource( 8 )
+custom_styles/fg = SubResource( 8 )
+custom_styles/bg = SubResource( 9 )
 min_value = 0.0
 max_value = 100.0
 step = 1.0
@@ -441,8 +538,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_styles/fg = SubResource( 5 )
-custom_styles/bg = SubResource( 6 )
+custom_styles/fg = SubResource( 10 )
+custom_styles/bg = SubResource( 11 )
 min_value = 0.0
 max_value = 100.0
 step = 1.0
@@ -526,10 +623,58 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="warning" type="Container" parent="hud" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -60.0
+margin_right = 20.0
+margin_bottom = -20.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = SubResource( 12 )
+
+[node name="label" type="Label" parent="hud/warning" index="0"]
+
+modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -33.0
+margin_top = 12.0
+margin_right = 77.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "not enough wood"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="timer" type="Timer" parent="hud/warning" index="1"]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = true
+autostart = false
+
 [connection signal="body_entered" from="ground_check" to="." method="_on_tile_area_entered"]
 
 [connection signal="body_exited" from="ground_check" to="." method="_on_tile_area_exited"]
 
 [connection signal="animation_finished" from="anim" to="." method="_on_animation_finished"]
+
+[connection signal="timeout" from="hud/warning/timer" to="hud/warning" method="_on_timer_timeout"]
 
 

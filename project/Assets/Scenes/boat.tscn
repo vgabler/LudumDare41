@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Sprites/16x16-tiles_0.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 8 )
+
+[node name="boat" type="KinematicBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 32
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+
+[node name="sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 103, 1, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="shape" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 1 )
+
+

@@ -18,7 +18,7 @@ func _ready():
 	sprite.frame = frame_offset
 	
 	add_to_group(resource)
-	value = randi()%4
+	value = randi()%4 + 1
 	set_durability(max_durability)
 
 func receive_damage(dmg):

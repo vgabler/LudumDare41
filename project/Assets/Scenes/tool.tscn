@@ -1,19 +1,42 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/Sprites/pixel.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/tools.png" type="Texture" id=1]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=3]
 
 script/source = "extends Area2D
 
-export var area_of_effect = false
-export var base_damage = 1
-export var bonus_damage = { rock = 0, tree = 0, character = 0}
+var area_of_effect = false
+var base_damage = 1
+var bonus_damage = 3
+var current_tool = \"\"
+
+var tools = { character = false, wood = false, rock = false }
 
 var tool_owner = null
 
 func _ready():
 	set_physics_process(false)
+
+func has_tool(id):
+	return tools[id]
+
+func add_tool(id):
+	get_node(\"sprite\").visible = true
+	tools[id] = true
+	change_tool(id)
+
+func change_tool(id):
+	if not has_tool(id):
+		return
+	
+	current_tool = id
+	if id == \"character\":
+		get_node(\"sprite\").frame = 0
+	if id == \"wood\":
+		get_node(\"sprite\").frame = 1
+	if id == \"rock\":
+		get_node(\"sprite\").frame = 2
 
 func _physics_process(delta):
 	var overlapping_bodies = get_overlapping_bodies()
@@ -27,9 +50,8 @@ func _physics_process(delta):
 		
 		var dmg = base_damage
 		
-		for bd in bonus_damage:
-			if body.is_in_group(bd):
-				dmg += bonus_damage[bd]
+		if body.is_in_group(current_tool):
+			dmg += bonus_damage
 		
 		body.receive_damage(dmg)
 		
@@ -45,12 +67,12 @@ func attack(own):
 func finish_attack():
 	set_physics_process(false)"
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 5, 5 )
+extents = Vector2( 3, 1 )
 
-[node name="tool" type="Area2D"]
+[node name="tool" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -61,25 +83,22 @@ collision_layer = 0
 collision_mask = 9
 audio_bus_override = false
 audio_bus_name = "Master"
-script = SubResource( 2 )
+script = SubResource( 3 )
 _sections_unfolded = [ "Collision", "Transform" ]
-area_of_effect = false
-base_damage = 1
-bonus_damage = {
-"character": 0,
-"rock": 0,
-"tree": 0
-}
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 
-position = Vector2( 5, 0 )
+visible = false
+position = Vector2( 3.02061, 2.98023e-08 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+hframes = 3
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
 [node name="shape" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 5, 0 )
-shape = SubResource( 1 )
+position = Vector2( 3, 0 )
+shape = SubResource( 2 )
 
 
