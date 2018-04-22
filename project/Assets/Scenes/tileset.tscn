@@ -7,14 +7,14 @@
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[node name="tileset" type="Node" index="0"]
+[node name="tileset" type="Node"]
 
 [node name="0" type="Sprite" parent="." index="0"]
 
 editor/display_folded = true
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 1, 1, 16, 16 )
+region_rect = Rect2( 0, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
 [node name="body" type="StaticBody2D" parent="0" index="0"]
@@ -37,7 +37,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, 16 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 1, 18, 16, 16 )
+region_rect = Rect2( 32, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
 [node name="2" type="Sprite" parent="." index="2"]
@@ -46,7 +46,7 @@ editor/display_folded = true
 position = Vector2( 0, 32 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 18, 18, 16, 16 )
+region_rect = Rect2( 16, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
 [node name="body" type="StaticBody2D" parent="2" index="0"]
@@ -63,13 +63,36 @@ bounce = 0.0
 
 shape = SubResource( 1 )
 
-[node name="3" type="Sprite" parent="." index="3"]
+[node name="8" type="Sprite" parent="." index="3"]
+
+editor/display_folded = true
+position = Vector2( 16, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 16, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="body" type="StaticBody2D" parent="8" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="8/body" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="3" type="Sprite" parent="." index="4"]
 
 editor/display_folded = true
 position = Vector2( 0, 48 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 69, 18, 16, 16 )
+region_rect = Rect2( 48, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
 [node name="body" type="StaticBody2D" parent="3" index="0"]
@@ -86,12 +109,13 @@ bounce = 0.0
 
 shape = SubResource( 1 )
 
-[node name="4" type="Sprite" parent="." index="4"]
+[node name="4" type="Sprite" parent="." index="5"]
 
+editor/display_folded = true
 position = Vector2( 0, 64 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 52, 35, 16, 16 )
+region_rect = Rect2( 64, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
 [node name="body" type="StaticBody2D" parent="4" index="0"]
@@ -105,6 +129,79 @@ friction = 1.0
 bounce = 0.0
 
 [node name="shape" type="CollisionShape2D" parent="4/body" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="5" type="Sprite" parent="." index="6"]
+
+editor/display_folded = true
+position = Vector2( 16, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="body" type="StaticBody2D" parent="5" index="0"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="shape" type="CollisionPolygon2D" parent="5/body" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -8, -8, 3, -8, 8, -3, 8, 8, -8, 8 )
+
+[node name="6" type="Sprite" parent="." index="7"]
+
+editor/display_folded = true
+position = Vector2( 16, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 32, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="body" type="StaticBody2D" parent="6" index="0"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="6/body" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="7" type="Sprite" parent="." index="8"]
+
+editor/display_folded = true
+position = Vector2( 16, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 48, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="body" type="StaticBody2D" parent="7" index="0"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="7/body" index="0"]
 
 shape = SubResource( 1 )
 

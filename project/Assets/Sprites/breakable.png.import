@@ -7,10 +7,10 @@ path="res://.import/breakable.png-b9b80069bd2361a35a4cd9de8cb2481d.stex"
 [deps]
 
 source_file="res://Assets/Sprites/breakable.png"
-source_md5="e0a0551a9aed5697922edf43e86badfd"
+source_md5="086749528f7d0642730e1bd6629f7d61"
 
 dest_files=[ "res://.import/breakable.png-b9b80069bd2361a35a4cd9de8cb2481d.stex" ]
-dest_md5="f3259a09f99c8f55774460a964f31cb6"
+dest_md5="14c265f88320280f0821a465b64c3db8"
 
 [params]
 

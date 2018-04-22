@@ -3,7 +3,7 @@ extends StaticBody2D
 var durability = 0 setget set_durability
 
 var max_durability = 10
-var resource = "rock"
+export var resource = "rock"
 var value = 0
 var frame_offset = 0
 var frame_rate = 0.0

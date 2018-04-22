@@ -15,6 +15,9 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
+	if Input.is_action_pressed("ui_cancel"):
+		get_tree().change_scene("res://Assets/Screens/title.tscn")
+	
 	if countdown == true:
 		second -= delta
 		
@@ -53,6 +56,8 @@ func _process(delta):
 func _on_finish_line_body_entered( body ):
 	if race_over:
 		return
+	get_node("bg_track").stop()
+	get_node("end_track").play()
 	
 	var racers = get_node("racers").get_children()
 	for r in racers:

@@ -7,10 +7,10 @@ path="res://.import/16x16-tiles_0.png-dadf5f3fc954d420e048ff164bf76a92.stex"
 [deps]
 
 source_file="res://Assets/Sprites/16x16-tiles_0.png"
-source_md5="9d56a61832b087125e61f2214398eef6"
+source_md5="b0b70661aa9ebdd1a67969dd3c4ba780"
 
 dest_files=[ "res://.import/16x16-tiles_0.png-dadf5f3fc954d420e048ff164bf76a92.stex" ]
-dest_md5="a3a9879ba040a0673be0af08de40ea61"
+dest_md5="b3816c2c867aa9a5a8bcd072449dd74b"
 
 [params]
 
