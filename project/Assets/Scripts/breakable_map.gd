@@ -11,5 +11,3 @@ func _ready():
 		o.position = map_to_world(t)
 		o.resource = resource
 		add_child(o)
-	
-	clear()
