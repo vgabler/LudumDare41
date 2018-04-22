@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rock_hit.wav-72376f5ce5ffb51be55dabbd84ed45dd.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/rock_hit.wav"
+source_md5="da364f3068d69ec5211db247eda1575c"
+
+dest_files=[ "res://.import/rock_hit.wav-72376f5ce5ffb51be55dabbd84ed45dd.sample" ]
+dest_md5="6607fdf83c71e7cfd5b72839d4a5090c"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

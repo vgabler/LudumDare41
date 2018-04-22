@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rock_break.wav-674b7ca973c41aec51bd5299d8c36a06.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/rock_break.wav"
+source_md5="b9cac79e5db15630d420d1b2e39e01f3"
+
+dest_files=[ "res://.import/rock_break.wav-674b7ca973c41aec51bd5299d8c36a06.sample" ]
+dest_md5="bb7eb2410d0968333908c42c1a4ee4db"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

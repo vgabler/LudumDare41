@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/apple_bite.wav-e2cf4adc12716379662936df3041fa19.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/apple_bite.wav"
+source_md5="5eacb7362cb6e93c06b337df550e3ff3"
+
+dest_files=[ "res://.import/apple_bite.wav-e2cf4adc12716379662936df3041fa19.sample" ]
+dest_md5="6affd2d5597d261dbb0b6254ca1085b6"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

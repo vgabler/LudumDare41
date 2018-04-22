@@ -9,7 +9,7 @@ var input_axe = false
 var input_pickaxe = false
 var input_eat = false
 var input_build = false
-var speed = 1.5
+var speed = 1
 var speed_mod = 1
 var base_speed_mod = 1
 var on_water = false
@@ -75,6 +75,12 @@ func _physics_process(delta):
 	
 	if input_dir != Vector2():
 		next_state = "walk"
+		if not on_water and not get_node("step").playing:
+			get_node("swim").stop()
+			get_node("step").play()
+		elif on_water and not get_node("swim").playing:
+			get_node("step").stop()
+			get_node("swim").play()
 	
 	if input_attack:
 		next_state = "attack"
@@ -148,6 +154,8 @@ func _on_animation_finished( anim_name ):
 
 func finish(winner):
 	set_physics_process(false)
+	get_node("swim").stop()
+	get_node("step").stop()
 	
 	var next_state = "lose"
 	if winner:
@@ -224,6 +232,7 @@ func has_food():
 func eat_food():
 	add_resource("food", -1)
 	set_hunger(hunger + 1)
+	get_node("apple_bite").play()
 
 func build_tool(id):
 	if current_tool.has_tool(id):

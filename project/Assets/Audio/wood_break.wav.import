@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wood_break.wav-f6b5b6f1a2d953b3d2ca660ff366b5a7.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/wood_break.wav"
+source_md5="380699c58435c37695bbba54f79a0a22"
+
+dest_files=[ "res://.import/wood_break.wav-f6b5b6f1a2d953b3d2ca660ff366b5a7.sample" ]
+dest_md5="bd963c526f2bb8bfe7a782e289d36935"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

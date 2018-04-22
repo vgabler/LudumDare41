@@ -38,7 +38,14 @@ func set_durability(h):
 
 func die():
 	drop()
-	queue_free()
+	get_node("shape").queue_free()
+	get_node("sprite").queue_free()
+	
+	var audio_player = AudioStreamPlayer2D.new()
+	audio_player.stream = load("res://Assets/Audio/%s_break.wav" % resource)
+	audio_player.connect("finished", self, "queue_free")
+	add_child(audio_player)
+	audio_player.play()
 
 func drop():
 	if value <= 0:
@@ -49,3 +56,6 @@ func drop():
 	a.value = value
 	get_parent().add_child(a)
 	a.global_position = global_position
+
+func _on_audio_finished():
+	queue_free()
