@@ -1,5 +1,6 @@
 extends TileMap
 
+export var clear_on_load = false
 export var resource = "rock"
 
 func _ready():
@@ -11,3 +12,6 @@ func _ready():
 		o.position = map_to_world(t)
 		o.resource = resource
 		add_child(o)
+	
+	if clear_on_load:
+		clear()

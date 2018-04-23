@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 #--------------------------------------------- BASE (MOVEMENT, ACTIONS, COLLISION)  --------------------
+var is_dumb = true
 export(Color) var col = Color(1,1,1,1)
 var input_dir = Vector2()
 var input_attack = false
@@ -19,9 +20,10 @@ onready var b_ray = get_node("body/build_ray")
 onready var anim = get_node("anim")
 onready var body = get_node("body")
 onready var current_tool = get_node("body/hand/tool")
-var current_state = "idle"
+export var current_state = "idle"
 
 func _ready():
+	anim.play(current_state)
 	get_node("body/sprite").modulate = col
 	get_node("hud/health").max_value = max_health
 	get_node("hud/hunger").max_value = max_hunger
@@ -32,6 +34,7 @@ func _ready():
 
 func start():
 	set_physics_process(true)
+	is_dumb = false
 
 func _physics_process(delta):
 	input_dir = Vector2()
@@ -75,12 +78,6 @@ func _physics_process(delta):
 	
 	if input_dir != Vector2():
 		next_state = "walk"
-		if not on_water and not get_node("step").playing:
-			get_node("swim").stop()
-			get_node("step").play()
-		elif on_water and not get_node("swim").playing:
-			get_node("step").stop()
-			get_node("swim").play()
 	
 	if input_attack:
 		next_state = "attack"
@@ -113,6 +110,20 @@ func _physics_process(delta):
 		body.look_at(position + motion.normalized())
 	
 	update_anim_state(next_state)
+	
+#	get_node("swim").playing = current_state == "walk" and on_water
+#	get_node("step").playing = current_state == "walk" and not on_water
+	
+	if current_state == "walk":
+		if not on_water and not get_node("step").playing:
+			get_node("swim").stop()
+			get_node("step").play()
+		elif on_water and not get_node("swim").playing:
+			get_node("step").stop()
+			get_node("swim").play()
+	else:
+		get_node("swim").stop()
+		get_node("step").stop()
 
 func check_input():
 	pass
@@ -143,6 +154,9 @@ func _on_tile_area_exited( area ):
 		boat = null
 
 func _on_animation_finished( anim_name ):
+	if is_dumb:
+		return
+	
 	if anim_name == "attack":
 		current_tool.finish_attack()
 		current_state = ""
@@ -220,7 +234,7 @@ func receive_damage(dmg):
 #-------------------------------------------- RESOURCES --------------------
 var resources = { food = 0, wood = 0, rock = 0 }
 
-# TOOL cost = 5 wood, 5 rock
+# TOOL cost = 2 wood, 7 rock
 
 func add_resource(id, value):
 	resources[id] += value
@@ -239,16 +253,16 @@ func build_tool(id):
 #		get_node("hud/warning").already_built()
 		return
 	
-	if resources["wood"] < 5:
+	if resources["wood"] < 2:
 		get_node("hud/warning").missing_resource("wood")
 		return
 	
-	if resources["rock"] < 5:
+	if resources["rock"] < 7:
 		get_node("hud/warning").missing_resource("rock")
 		return
 	
-	add_resource("wood", -5)
-	add_resource("rock", -5)
+	add_resource("wood", -2)
+	add_resource("rock", -7)
 	current_tool.add_tool(id)
 
 # BOAT cost = 20 wood

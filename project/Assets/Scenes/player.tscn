@@ -5,7 +5,9 @@
 
 [node name="player" index="0" instance=ExtResource( 1 )]
 
+editor/display_folded = false
 script = ExtResource( 2 )
+is_player_2 = false
 
 [node name="sprite" parent="body" index="0"]
 

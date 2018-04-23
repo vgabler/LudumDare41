@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[node name="breakable" type="StaticBody2D"]
+[node name="breakable" type="StaticBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 9
@@ -19,6 +19,7 @@ friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
+resource = "rock"
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 

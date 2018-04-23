@@ -12,11 +12,11 @@
 custom_solver_bias = 0.0
 radius = 6.0
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=14]
 
 resource_name = "attack"
 length = 0.4
-loop = false
+loop = true
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("body/sprite:frame")
@@ -55,7 +55,7 @@ tracks/2/keys = {
 "values": [ 18.5141, -1.53677, -14.4399, -5.0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=15]
 
 resource_name = "eat"
 length = 0.5
@@ -110,7 +110,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=16]
 
 length = 0.5
 loop = true
@@ -152,7 +152,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=17]
 
 resource_name = "lose"
 length = 0.4
@@ -195,7 +195,7 @@ tracks/2/keys = {
 "values": [ 70.9 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=18]
 
 length = 0.6
 loop = true
@@ -237,7 +237,7 @@ tracks/2/keys = {
 "values": [ -4.07877, 12.6208, 0.304711, -6.56401, 11.9, 11.7 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=19]
 
 resource_name = "win"
 length = 0.4
@@ -280,7 +280,7 @@ tracks/2/keys = {
 "values": [ -96.7, -59.2 ]
 }
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=13]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -417,7 +417,6 @@ func _on_timer_timeout():
 "character",
 ]]
 
-editor/display_folded = true
 position = Vector2( 198, 1566 )
 input_pickable = false
 collision_layer = 25
@@ -426,6 +425,7 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
 col = Color( 1, 1, 1, 1 )
+current_state = "idle"
 max_health = 10.0
 max_hunger = 10.0
 
@@ -464,7 +464,7 @@ z_index = 1
 texture = ExtResource( 2 )
 vframes = 5
 hframes = 5
-frame = 1
+frame = 10
 _sections_unfolded = [ "Animation", "Transform", "Z Index" ]
 
 [node name="build_ray" type="RayCast2D" parent="body" index="1"]
@@ -479,8 +479,8 @@ collision_mask = 34
 [node name="hand" type="Position2D" parent="body" index="2"]
 
 editor/display_folded = true
-position = Vector2( 4.86707, 8.46622 )
-rotation = 0.220275
+position = Vector2( 4.81079, 5.14766 )
+rotation = 0.167014
 _sections_unfolded = [ "Transform" ]
 
 [node name="tool" parent="body/hand" index="0" instance=ExtResource( 3 )]
@@ -492,12 +492,12 @@ autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/attack = SubResource( 2 )
-anims/eat = SubResource( 3 )
-anims/idle = SubResource( 4 )
-anims/lose = SubResource( 5 )
-anims/walk = SubResource( 6 )
-anims/win = SubResource( 7 )
+anims/attack = SubResource( 14 )
+anims/eat = SubResource( 15 )
+anims/idle = SubResource( 16 )
+anims/lose = SubResource( 17 )
+anims/walk = SubResource( 18 )
+anims/win = SubResource( 19 )
 blend_times = [  ]
 
 [node name="hud" type="Control" parent="." index="4"]
@@ -529,7 +529,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_styles/fg = SubResource( 8 )
+custom_styles/fg = SubResource( 13 )
 custom_styles/bg = SubResource( 9 )
 min_value = 0.0
 max_value = 100.0

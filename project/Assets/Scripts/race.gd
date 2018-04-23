@@ -1,5 +1,7 @@
 extends Node
 
+export var is_two_players = false
+
 const COUNTDOWN_TIME = 4
 
 var timer = COUNTDOWN_TIME + 1
@@ -9,14 +11,22 @@ var race_over = false
 var race_started = false
 var countdown = true
 var race_time = 0
-onready var finish_position = get_node("environment/finish_line").position
+var finish_position setget , get_finish_position
+
+func get_finish_position():
+	return get_node("environment/finish_line").position
 
 func _ready():
 	set_process(true)
+	
+	if not is_two_players:
+		return
+		
+	get_node("duble_camera").start(get_node("racers/player"),get_node("racers/player2"))
 
 func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
-		get_tree().change_scene("res://Assets/Screens/title.tscn")
+		Global.to_title()
 	
 	if countdown == true:
 		second -= delta
@@ -32,9 +42,6 @@ func _process(delta):
 				var racers = get_node("racers").get_children()
 				race_started = true
 				for r in racers:
-					if r.has_method("set_ai_path"):
-						r.set_ai_path(get_node("environment").get_walk_path(r.position, finish_position))
-					
 					r.start()
 				
 				get_node("UI/cd_panel/beep2").play()
@@ -63,7 +70,7 @@ func _on_finish_line_body_entered( body ):
 	for r in racers:
 		r.finish(r == body)
 	
-	get_node("UI/cd_panel/cd_label").text = "Race over!"
+	get_node("UI/cd_panel/cd_label").text = "Finish!"
 	get_node("UI/cd_panel").visible = true
 	
 	race_over = true

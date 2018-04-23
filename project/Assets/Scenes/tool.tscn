@@ -12,13 +12,16 @@ script/source = "extends Area2D
 var area_of_effect = false
 var base_damage = 1
 var bonus_damage = 3
-var current_tool = \"\"
+export var current_tool = \"\"
 
 var tools = { character = false, wood = false, rock = false }
 
 var tool_owner = null
 
 func _ready():
+	if current_tool != \"\":
+		add_tool(current_tool)
+	
 	set_physics_process(false)
 
 func has_tool(id):
@@ -84,7 +87,7 @@ func finish_attack():
 custom_solver_bias = 0.0
 extents = Vector2( 3, 1 )
 
-[node name="tool" type="Area2D"]
+[node name="tool" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -97,6 +100,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = SubResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
+current_tool = ""
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 
