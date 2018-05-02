@@ -12,11 +12,11 @@
 custom_solver_bias = 0.0
 radius = 6.0
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=2]
 
 resource_name = "attack"
 length = 0.4
-loop = true
+loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("body/sprite:frame")
@@ -55,7 +55,7 @@ tracks/2/keys = {
 "values": [ 18.5141, -1.53677, -14.4399, -5.0 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=3]
 
 resource_name = "eat"
 length = 0.5
@@ -110,7 +110,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=4]
 
 length = 0.5
 loop = true
@@ -152,7 +152,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=5]
 
 resource_name = "lose"
 length = 0.4
@@ -195,7 +195,7 @@ tracks/2/keys = {
 "values": [ 70.9 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=6]
 
 length = 0.6
 loop = true
@@ -237,7 +237,7 @@ tracks/2/keys = {
 "values": [ -4.07877, 12.6208, 0.304711, -6.56401, 11.9, 11.7 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=7]
 
 resource_name = "win"
 length = 0.4
@@ -280,7 +280,7 @@ tracks/2/keys = {
 "values": [ -96.7, -59.2 ]
 }
 
-[sub_resource type="StyleBoxFlat" id=13]
+[sub_resource type="StyleBoxFlat" id=8]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -413,7 +413,7 @@ func warn(message):
 func _on_timer_timeout():
 	visible = false"
 
-[node name="character" type="KinematicBody2D" groups=[
+[node name="character" type="KinematicBody2D" index="0" groups=[
 "character",
 ]]
 
@@ -492,12 +492,12 @@ autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/attack = SubResource( 14 )
-anims/eat = SubResource( 15 )
-anims/idle = SubResource( 16 )
-anims/lose = SubResource( 17 )
-anims/walk = SubResource( 18 )
-anims/win = SubResource( 19 )
+anims/attack = SubResource( 2 )
+anims/eat = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/lose = SubResource( 5 )
+anims/walk = SubResource( 6 )
+anims/win = SubResource( 7 )
 blend_times = [  ]
 
 [node name="hud" type="Control" parent="." index="4"]
@@ -529,7 +529,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_styles/fg = SubResource( 13 )
+custom_styles/fg = SubResource( 8 )
 custom_styles/bg = SubResource( 9 )
 min_value = 0.0
 max_value = 100.0
